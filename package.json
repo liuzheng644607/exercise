@@ -1,0 +1,22 @@
+{
+  "name": "exercise",
+  "version": "0.0.0",
+  "description": "my exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuzheng644607/exercise.git"
+  },
+  "keywords": [
+    "exercise"
+  ],
+  "author": "lyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liuzheng644607/exercise/issues"
+  },
+  "homepage": "https://github.com/liuzheng644607/exercise#readme"
+}
