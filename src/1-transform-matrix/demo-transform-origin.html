@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" href="reset.css"> -->
+    <title>transform-origin</title>
+    <style type="text/css">
+    .box {
+        left: 100px;
+        top: 100px;
+        opacity: 0.8;
+        display: block;
+        position: absolute;
+    }
+    .box2 {
+        background-color: red;
+        /*transform: rotate(45deg);*/
+        /*transform-origin: 256px 0;*/
+        /*transform: scale(1.5) translate(256px,0px) translate(-256px,0px);*/
+        /*transform: scale(1.5);*/
+    }
+    </style>
+</head>
+<body>
+    <img class="box box2" id="greenBox" src="img/256x144.jpg" />
+    <img class="box" src="img/256x144.jpg" />
+</body>
+<script type="text/javascript" src="matrix.js"></script>
+<script type="text/javascript" src="gl-matrix.js"></script>
+<script type="text/javascript">
+var box = document.querySelector('#greenBox');
+
+// 变换原点,  element local-coordination system
+var o = [128, -72];
+
+var translate = [
+    1, 0, 0, 0,
+    0, 1, 0, 0,
+    0, 0, 1, 0,
+    o[0], o[1], 0, 1
+];
+
+var untranslate = [
+    1, 0, 0, 0,
+    0, 1, 0, 0,
+    0, 0, 1, 0,
+    -o[0], -o[1], 0, 1
+];
+
+var rotate = mat4.identity([]);
+
+mat4.rotate(rotate, rotate, Math.PI/4, [0, 0, 1]);
+
+var a = Matrix.multMatrix(translate, rotate);
+var b = Matrix.multMatrix(a, untranslate);
+
+let c = b.join(',');
+
+box.style.transform = 'matrix3d('+c+')';
+
+
+function transformOrigin(matrix, origin) {
+    const [ x, y, z ] = origin;
+
+    const translate = mat4.identity([]);
+    const untranslate = mat4.identity([]);
+
+    mat4.translate(translate, translate, [x, y, z]);
+    mat4.translate(untranslate, untranslate, [-x, -y, -z]);
+
+    mat4.multiply(matrix, translate, matrix);
+    mat4.multiply(matrix, matrix, untranslate);
+}
+
+</script>
+<script type="text/javascript">
+
+</script>
+</html>

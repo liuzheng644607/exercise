@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="600" height="600" style="border:1px solid #d3d3d3;">
+        </canvas>
+
+        <script type="text/javascript">
+            var c = document.getElementById('myCanvas');
+            var ctx = c.getContext('2d');
+
+            ctx.fillStyle = 'yellow';
+            ctx.fillRect(0, 0, 250, 100);
+
+            ctx.transform(1, 0.5, -0.5, 1, 130, 10);
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, 0, 250, 100);
+
+            ctx.transform(1, 0.5, -0.5, 1, 30, 10);
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(0, 0, 250, 100);
+
+            //
+            /**
+             *
+             * transform(m11, m12, m21, m22, dx, dy)
+            m11：水平方向的缩放
+            m12：水平方向的偏移
+            m21：竖直方向的偏移
+            m22：竖直方向的缩放
+            dx：水平方向的移动
+            dy：竖直方向的移动
+             * @type {[type]}
+             */
+        </script>
+    </body>
+</html>
